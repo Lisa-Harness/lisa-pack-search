@@ -6,6 +6,23 @@ mode_kind: chat
 routable: true
 priority: 5
 pre_turn_operation_ids: [discussion_briefing]
+routing_intent_tags: [reasoning]
+satisfies_intents: [reasoning]
+routing_intent_keywords:
+  reasoning:
+    - analyze
+    - reason
+    - compare
+    - evaluate
+    - discuss
+    - debate
+    - think
+    - consider
+    - weigh
+    - pros
+    - cons
+    - tradeoff
+    - swot
 command_pattern: "^(?:/)?discuss(?:[\\s,:;]+(?P<query>.+))?$"
 description: "Conversational discussion mode with an optional pre-turn briefing."
 ---
