@@ -8,9 +8,9 @@ capability plus conversational and reasoning modes that consume it:
 - Operations: the ``web_search`` research loop, the ``discussion_briefing``
   pre-turn enrichment for discuss, and (planned) ``deep_research`` for
   multi-hop fetch-and-synthesize.
-- Tools: ``web_search`` (generic provider stub) and ``fetch_page`` (URL fetch
-  + main-content extraction) so research loops synthesize from full page
-  text, not snippets.
+- Tools: ``web_search`` (generic provider stub). The ``fetch_page`` URL fetch
+  tool moved to the bundled ``lisa-pack-core`` so every mode inherits it as
+  an ambient capability.
 
 The concrete public web provider lives in separate provider packs (for
 example ``lisa-pack-brave-search``), which can override this stub via
