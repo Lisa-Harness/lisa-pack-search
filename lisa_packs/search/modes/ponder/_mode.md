@@ -7,6 +7,7 @@ require_query: true
 routable: true
 priority: 8
 routing_intent_tags: [research, reasoning]
+satisfies_intents: [research, reasoning]
 routing_intent_keywords:
   research:
     - latest

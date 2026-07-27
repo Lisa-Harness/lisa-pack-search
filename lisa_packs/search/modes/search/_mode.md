@@ -6,6 +6,7 @@ mode_kind: action
 artifact_type: search_results
 routable: true
 routing_intent_tags: [research]
+satisfies_intents: [research]
 routing_intent_keywords:
   research:
     - search
