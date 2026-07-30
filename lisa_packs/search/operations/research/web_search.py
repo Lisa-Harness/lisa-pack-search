@@ -63,3 +63,20 @@ class WebSearchStructuredOutput(BaseModel):
         if isinstance(value, list):
             return "\n".join(str(item) for item in value)
         return value
+
+    @field_validator("contradictory_points", "actionable_takeaways", "sources", mode="before")
+    @classmethod
+    def _coerce_str_to_list(cls, value: Any) -> Any:
+        """Tolerate models that return a ``list[str]`` field as a bare string.
+
+        Reasoning models sometimes emit ``""`` for optional list fields when
+        they have nothing to report, instead of ``[]``. Without this coercion
+        pydantic rejects the string with ``list_type`` and the whole operation
+        fails even though the rest of the payload is valid.
+        """
+        if value is None:
+            return []
+        if isinstance(value, str):
+            stripped = value.strip()
+            return [stripped] if stripped else []
+        return value
