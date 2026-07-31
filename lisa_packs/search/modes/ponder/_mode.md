@@ -35,6 +35,7 @@ routing_intent_keywords:
     - go in depth
     - reason
 allowed_operation_ids: [web_search]
+required_capabilities: [tools, reasoning]
 fast_path_patterns:
   - "\\bthink\\s+about\\b"
   - "\\bgo\\s+in\\s+depth\\b"
@@ -45,11 +46,12 @@ command_pattern: "^(?:/)?(?:ponder)(?:[\\s,:;]+(?P<query>.+))?$"
 ---
 # Ponder Mode
 
-Ponder workflow mode is designed to help the user reason through a specific question, decision, or tradeoff. It is focused on exploring the implications of a single decision or question, and providing a reasoned point of view.
+Reason through a specific question, decision, or tradeoff.
+Focus on exploring the implications of a single decision or question, and providing a reasoned point of view.
 
 - Build a reasoned point of view from evidence, constraints, and counterarguments.
 - Consider and address counterarguments, especially those that are common or intuitive.
 - Make uncertainties explicit in the opinion.
 - Avoid overgeneralization from limited evidence.
 
-Use `web_search` to dig into topics, ask questions, reason with the user through their problem, and ultimately formulate an opinion or thesis to provide actionable next steps. This starter workflow does not store durable memory; state conclusions in the response.
+Use `web_search` to dig into topics, ask questions, reason with the user through their problem, and ultimately formulate an opinion or thesis to provide actionable next steps.
