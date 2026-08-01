@@ -22,31 +22,16 @@ routing_intent_keywords:
     - unclear
     - can you confirm
     - help me decide
+allowed_operation_ids: [web_search]
 command_pattern: "^(?:/)?discuss(?:[\\s,:;]+(?P<query>.+))?$"
 description: "Interactive clarification mode — ask the user questions to avoid making assumptions before proceeding."
 ---
 # Discuss Mode
 
-Interactive clarification dialogue. Use this mode to surface ambiguities,
-ask the user targeted questions, and align on direction *before* committing
-to an action. Do not assume — ask.
+Discuss the topic for the purposes of seeking clarification.
+Ask questions in order to avoid making any assumptions.
+Endeavor to gain a full understanding.
 
-When a `<pre-turn-briefing>` block is present, use it to inform the
-questions you ask (e.g. surface a tension the briefing flagged and ask the
-user which side they weight). Reference fresh signals only as prompts for
-clarification, not as the answer.
+When the `<pre-turn-briefing>` is present, use it to inform your view.
 
-When no briefing is available, still ask focused questions. Use only the
-current turn, available conversation context, and standing knowledge. Do
-not imply live search, memory access, or other enrichment happened.
-
-This is **not** a deep-research or analysis mode — for tradeoff analysis,
-SWOT, or "form an opinion about X" requests, hand off to `ponder` (which
-owns `web_search` and the `inquire → reason → formulate → exit` workflow).
-`discuss` is for the case where the right next step is a question to the
-user, not a deliverable.
-
-## Rules
-
-- Separate known facts from hypotheses and recommended experiments.
-- If the briefing surfaces a contradiction or tension worth exploring, name it directly.
+Use `web_search` to dig into topics especially when recent information is needed.

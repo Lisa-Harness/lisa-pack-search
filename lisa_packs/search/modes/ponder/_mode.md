@@ -6,35 +6,20 @@ mode_kind: workflow
 require_query: true
 routable: true
 priority: 8
-routing_intent_tags: [research, reasoning]
-satisfies_intents: [research, reasoning]
+routing_intent_tags: [analyze, reason, evaluate]
+satisfies_intents: [analyze, reason, evaluate]
 routing_intent_keywords:
-  research:
-    - latest
-    - recent
-    - current
-    - news
-    - update
-    - today
-    - framework
-    - tool
-    - market
-    - landscape
-  reasoning:
-    - understand
-    - swot
-    - analyze
-    - analyse
-    - evaluate
-    - compare
-    - comparison
-    - tradeoff
-    - trade-off
-    - pros and cons
-    - deep dive
-    - go in depth
-    - reason
-allowed_operation_ids: [web_search]
+  - question
+  - reason
+  - analyze
+  - explore
+  - ponder
+  - evaluate
+  - consider
+  - tradeoff
+  - weigh
+  - deliberate
+  - assess
 required_capabilities: [tools, reasoning]
 fast_path_patterns:
   - "\\bthink\\s+about\\b"
@@ -53,5 +38,3 @@ Focus on exploring the implications of a single decision or question, and provid
 - Consider and address counterarguments, especially those that are common or intuitive.
 - Make uncertainties explicit in the opinion.
 - Avoid overgeneralization from limited evidence.
-
-Use `web_search` to dig into topics, ask questions, reason with the user through their problem, and ultimately formulate an opinion or thesis to provide actionable next steps.
