@@ -7,6 +7,7 @@ max_calls_per_turn: 1
 completion_temperature: 0
 response_format_model_path: lisa_packs.search.operations.research.discussion_briefing.DiscussionBriefingStructuredOutput
 response_output_text_field: output_text
+exportable: true
 ---
 
 # Discussion Briefing
