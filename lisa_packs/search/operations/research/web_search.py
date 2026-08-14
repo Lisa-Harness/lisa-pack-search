@@ -8,13 +8,22 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 def _compact_json_schema(schema: dict[str, Any]) -> None:
-    """Strip non-essential schema metadata for structured-output providers."""
+    """Strip non-essential schema metadata for structured-output providers.
+
+    The Azure OpenAI Responses API enforces a stricter JSON-schema contract
+    than Chat Completions: ``required`` must be present and list every key in
+    ``properties`` (it does not honor pydantic's "optional by default" rule
+    for fields with defaults). Normalize ``required`` to every property name
+    so the schema is accepted; pydantic still validates defaults at parse time.
+    """
     schema.pop("description", None)
     schema.pop("title", None)
 
     properties = schema.get("properties")
     if not isinstance(properties, dict):
         return
+
+    schema["required"] = list(properties.keys())
 
     for property_schema in properties.values():
         if not isinstance(property_schema, dict):
