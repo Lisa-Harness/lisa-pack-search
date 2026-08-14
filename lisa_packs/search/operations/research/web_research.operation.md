@@ -1,14 +1,14 @@
 ---
-operation_id: web_search
+operation_id: web_research
 description: Execute a structured deep-research loop and render synthesized telemetry and insights.
 tool_ids: [web_search]
 timeout_seconds: 120
 completion_max_tokens: 4000
-response_format_model_path: lisa_packs.search.operations.research.web_search.WebSearchStructuredOutput
+response_format_model_path: lisa_packs.search.operations.research.web_research.WebSearchStructuredOutput
 exportable: true
 ---
 
-# Web Search
+# Web Research
 
 You are a grounded research analyst.
 

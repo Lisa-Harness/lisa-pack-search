@@ -56,7 +56,7 @@ def test_search_pack_modes_discovered() -> None:
 def test_search_pack_models_importable() -> None:
     """The pack's response models are importable via the new module path."""
     from lisa_packs.search.models import WebSearchResponse, WebSearchResult
-    from lisa_packs.search.operations.research.web_search import WebSearchStructuredOutput
+    from lisa_packs.search.operations.research.web_research import WebSearchStructuredOutput
     from lisa_packs.search.operations.research.discussion_briefing import (
         DiscussionBriefingStructuredOutput,
     )

@@ -1,4 +1,4 @@
-"""Structured output contract for declarative web_search."""
+"""Structured output contract for declarative web_research."""
 
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ def _compact_json_schema(schema: dict[str, Any]) -> None:
 
 
 class WebSearchStructuredOutput(BaseModel):
-    """Declarative response envelope for the web_search operation."""
+    """Declarative response envelope for the web_research operation."""
 
     model_config = ConfigDict(json_schema_extra=_compact_json_schema)
 
