@@ -1,8 +1,8 @@
 """Tests for the search pack's catalog discovery.
 
-Verifies that the ``lisa-content`` server discovers the web_search tool,
-the two operations, and the three modes (discuss, search, ponder) from
-the search pack's content root.
+Verifies that the ``lisa-content`` server discovers the web_search tool
+and the research operations from the search pack's content root, and
+that the pack ships no mode content (modes were removed in 336a73f).
 """
 
 from __future__ import annotations
@@ -10,7 +10,6 @@ from __future__ import annotations
 import json
 
 from sdk.content import (
-    build_mode_catalog_json,
     build_tool_catalog_json,
     resolve_mode_roots,
     resolve_tool_roots,
@@ -34,23 +33,16 @@ def test_web_search_tool_discovered() -> None:
     assert tool["module_path"].startswith("lisa_packs.search.tools.")
 
 
-def test_search_pack_modes_discovered() -> None:
-    """The search pack owns discuss, search, and ponder modes.
+def test_search_pack_has_no_mode_content() -> None:
+    """The pack no longer ships mode content.
 
-    Discuss was absorbed from the core pack so each conversational/research
-    mode is co-located with its enrichment operations in the search pack.
+    discuss/ponder/search modes were removed in commit 336a73f ("refactor:
+    remove discuss, ponder, and search modes to streamline functionality");
+    the pack now contributes tools and research operations only. The mode
+    catalog scan must therefore find no ``modes/`` directory here.
     """
     roots = resolve_mode_roots([get_content_root()])
-    assert roots, "No modes/ directory found in search pack"
-
-    catalog = json.loads(build_mode_catalog_json(roots))
-
-    assert set(catalog) >= {"discuss", "search", "ponder"}, catalog.keys()
-
-    discuss = catalog["discuss"]
-    assert discuss["mode_kind"] == "chat"
-    assert discuss["pre_turn_operation_ids"] == ["discussion_briefing"]
-    assert discuss["command_pattern"].startswith("^(?:/)?discuss")
+    assert roots == [], f"unexpected mode roots: {roots}"
 
 
 def test_search_pack_models_importable() -> None:
