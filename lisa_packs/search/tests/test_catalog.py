@@ -14,6 +14,7 @@ from sdk.content import (
     resolve_mode_roots,
     resolve_tool_roots,
 )
+
 from lisa_packs.search import get_content_root
 
 
@@ -48,10 +49,10 @@ def test_search_pack_has_no_mode_content() -> None:
 def test_search_pack_models_importable() -> None:
     """The pack's response models are importable via the new module path."""
     from lisa_packs.search.models import WebSearchResponse, WebSearchResult
-    from lisa_packs.search.operations.research.web_research import WebSearchStructuredOutput
     from lisa_packs.search.operations.research.discussion_briefing import (
         DiscussionBriefingStructuredOutput,
     )
+    from lisa_packs.search.operations.research.web_research import WebSearchStructuredOutput
 
     assert WebSearchResponse is not None
     assert WebSearchResult is not None

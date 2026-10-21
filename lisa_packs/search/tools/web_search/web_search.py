@@ -7,9 +7,8 @@ pack (for example ``lisa-pack-brave-search``) to replace this stub.
 
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
-
 from kernel.models import ToolExecutionContext, ToolResult
+from pydantic import BaseModel, Field
 
 __all__ = ["Parameters", "execute", "is_configured", "search"]
 
