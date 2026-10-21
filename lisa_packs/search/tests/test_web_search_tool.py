@@ -8,7 +8,6 @@ pack is installed and preferred.
 from __future__ import annotations
 
 import pytest
-
 from kernel.models import ToolExecutionContext
 
 
@@ -30,8 +29,7 @@ async def test_web_search_returns_friendly_error_when_unconfigured(
 
 
 @pytest.mark.asyncio
-async def test_web_search_returns_error_on_empty_query(
-) -> None:
+async def test_web_search_returns_error_on_empty_query() -> None:
     from lisa_packs.search.tools.web_search import web_search as ws
 
     ctx = ToolExecutionContext(tool_id="web_search", parameters={})
